@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Cripto {
+    StringBuilder builder = new StringBuilder();
+
     public Cripto() {
     }
 
@@ -17,7 +19,7 @@ public class Cripto {
         return builder.toString();
     }
 
-    public BufferedImage encode(String message, BufferedImage image){
+    public BufferedImage encode(String message, BufferedImage image) throws CustomException {
         int linha = image.getHeight();
         int coluna = image.getWidth();
         int newRed, newGreen, newBlue;
@@ -27,7 +29,7 @@ public class Cripto {
 
         /* Se Mensagem não cabe na imagem */
         if (linha*coluna*3 < message.length()){
-            return null;
+            throw new CustomException("Tamanho da imagem não é suficiente para esconder a imagem");
         }
 
         BufferedImage newImage = new BufferedImage(coluna, linha, BufferedImage.TYPE_3BYTE_BGR);
@@ -79,7 +81,6 @@ public class Cripto {
         int linha = image.getHeight();
         int coluna = image.getWidth();
         int red, green, blue;
-        StringBuilder builder = new StringBuilder();
 
         if (image == null){
             return null;
@@ -93,11 +94,32 @@ public class Cripto {
                 green = color.getGreen();
                 blue = color.getBlue();
 
-                builder.append(red % 2);
-                builder.append(green % 2);
-                builder.append(blue % 2);
+                if (appendInt(red) || appendInt(green) || appendInt(blue)){
+                    return builder.toString();
+                }
             }
         }
         return builder.toString();
+    }
+
+    private boolean appendInt(int color){
+        builder.append(color % 2);
+
+        /* Para de ler os bits qndo encontra ## */
+        if (builder.toString().contains("0010001100100011")){
+            return true;
+        }
+        return false;
+    }
+
+    public String getWordsFromBit(String bitMessage){
+        String str = "";
+        for (int i = 0; i < bitMessage.length()/8; i++) {
+
+            int a = Integer.parseInt(bitMessage.substring(8*i,(i+1)*8),2);
+            str += (char)(a);
+        }
+        /* Retorna a frase sem o ## */
+        return str.substring(0,str.length()-2);
     }
 }
