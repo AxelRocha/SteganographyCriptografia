@@ -1,7 +1,7 @@
 package main.utils;
 
-import main.customexceptions.CustomExceptions.InputImageNotFoundException;
-import main.customexceptions.CustomExceptions.MessageArchiveNotFoundException;
+import main.customExceptions.CustomExceptions.InputImageNotFoundException;
+import main.customExceptions.CustomExceptions.MessageArchiveNotFoundException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

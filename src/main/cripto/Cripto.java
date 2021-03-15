@@ -1,6 +1,6 @@
 package main.cripto;
 
-import main.customexceptions.CustomExceptions.ImageSizeNotEnoughException;
+import main.customExceptions.CustomExceptions.ImageSizeNotEnoughException;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

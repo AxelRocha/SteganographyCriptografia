@@ -1,4 +1,4 @@
-package main.customexceptions;
+package main.customExceptions;
 
 public class CustomExceptions extends Exception{
     public CustomExceptions(String message) {

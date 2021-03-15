@@ -1,7 +1,7 @@
 package main;
 
 import main.cripto.Cripto;
-import main.customexceptions.CustomExceptions;
+import main.customExceptions.CustomExceptions;
 
 import java.awt.image.BufferedImage;
 
