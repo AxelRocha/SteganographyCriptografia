@@ -1,4 +1,6 @@
-package main;
+package main.cripto;
+
+import main.customexceptions.CustomExceptions.ImageSizeNotEnoughException;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,7 +21,7 @@ public class Cripto {
         return builder.toString();
     }
 
-    public BufferedImage encode(String message, BufferedImage image) throws CustomException {
+    public BufferedImage encode(String message, BufferedImage image) throws ImageSizeNotEnoughException {
         int linha = image.getHeight();
         int coluna = image.getWidth();
         int newRed, newGreen, newBlue;
@@ -29,7 +31,7 @@ public class Cripto {
 
         /* Se Mensagem não cabe na imagem */
         if (linha*coluna*3 < message.length()){
-            throw new CustomException("Tamanho da imagem não é suficiente para esconder a imagem");
+            throw new ImageSizeNotEnoughException("Tamanho da imagem não é suficiente para esconder a imagem");
         }
 
         BufferedImage newImage = new BufferedImage(coluna, linha, BufferedImage.TYPE_3BYTE_BGR);

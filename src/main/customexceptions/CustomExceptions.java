@@ -16,4 +16,10 @@ public class CustomExceptions extends Exception{
             super(message);
         }
     }
+
+    public static class ImageSizeNotEnoughException extends CustomExceptions {
+        public ImageSizeNotEnoughException(String message) {
+            super(message);
+        }
+    }
 }
