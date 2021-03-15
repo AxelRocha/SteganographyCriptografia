@@ -1,11 +1,14 @@
 package main;
 
+import main.cripto.Cripto;
+import main.customexceptions.CustomExceptions;
+
 import java.awt.image.BufferedImage;
 
-import static main.Utils.*;
+import static main.utils.Utils.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomExceptions {
         Cripto cripto = new Cripto();
 
         /* Pega Mensagem do bloco de Texto */
@@ -29,9 +32,12 @@ public class Main {
         /* Pega a mensagem em bit decodificada da imagem */
         String decode = cripto.decode(decodeImage);
 
+        String frase = cripto.getWordsFromBit(decode);
 
-        System.out.println(binaryMessage);
-        System.out.println(decode);
+
+        System.out.println("Mensagem Codificada: \n" + binaryMessage);
+        System.out.println("Mensagem Decodificada: \n" + decode);
+        System.out.println("Mensagem Traduzida: \n" + frase);
 
     }
 }

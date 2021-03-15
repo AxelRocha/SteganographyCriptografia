@@ -1,4 +1,6 @@
-package main;
+package main.utils;
+
+import main.customexceptions.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -8,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Utils {
-    public static String getMessageFromFile(){
+    public static String getMessageFromFile() throws CustomExceptions {
         StringBuilder message = new StringBuilder();
         try {
             File messageText = new File("message.txt");
@@ -20,17 +22,17 @@ public class Utils {
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+            throw new CustomExceptions.MessageArchiveNotFound("Arquivo \"message.txt\" de mensagem não foi encontrado");
         }
         return message.toString();
     }
 
-    public static BufferedImage getInputImage(){
-        BufferedImage image = null;
+    public static BufferedImage getInputImage() throws CustomExceptions {
+        BufferedImage image;
         try {
             image = ImageIO.read(new File("inputImage.png"));
-
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new CustomExceptions.InputImageNotFound("Imagem \"inputImage.png\" não encontrada");
         }
         return image;
     }
@@ -39,7 +41,6 @@ public class Utils {
         BufferedImage image = null;
         try {
             image = ImageIO.read(new File("outputImage.png"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
