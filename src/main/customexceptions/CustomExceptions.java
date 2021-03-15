@@ -5,14 +5,14 @@ public class CustomExceptions extends Exception{
         super(message);
     }
 
-    public static class MessageArchiveNotFound extends CustomExceptions {
-        public MessageArchiveNotFound(String message) {
+    public static class MessageArchiveNotFoundException extends CustomExceptions {
+        public MessageArchiveNotFoundException(String message) {
             super(message);
         }
     }
 
-    public static class InputImageNotFound extends CustomExceptions {
-        public InputImageNotFound(String message) {
+    public static class InputImageNotFoundException extends CustomExceptions {
+        public InputImageNotFoundException(String message) {
             super(message);
         }
     }
