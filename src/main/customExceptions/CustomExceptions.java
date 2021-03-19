@@ -22,4 +22,10 @@ public class CustomExceptions extends Exception{
             super(message);
         }
     }
+
+    public static class EndMessageTokenNotFoundException extends CustomExceptions {
+        public EndMessageTokenNotFoundException(String message) {
+            super(message);
+        }
+    }
 }

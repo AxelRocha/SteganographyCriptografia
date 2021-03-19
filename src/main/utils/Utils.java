@@ -2,6 +2,7 @@ package main.utils;
 
 import main.customExceptions.CustomExceptions.InputImageNotFoundException;
 import main.customExceptions.CustomExceptions.MessageArchiveNotFoundException;
+import main.customExceptions.CustomExceptions.EndMessageTokenNotFoundException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Utils {
-    public static String getMessageFromFile() throws MessageArchiveNotFoundException {
+    public static String getMessageFromFile() throws MessageArchiveNotFoundException, EndMessageTokenNotFoundException {
         StringBuilder message = new StringBuilder();
         try {
             File messageText = new File("message.txt");
@@ -24,6 +25,9 @@ public class Utils {
             System.out.println("An error occurred.");
             e.printStackTrace();
             throw new MessageArchiveNotFoundException("Arquivo \"message.txt\" de mensagem não foi encontrado");
+        }
+        if (!message.toString().contains("##")){
+            throw new EndMessageTokenNotFoundException("É necessário possuir o token ## ao final da mensagem");
         }
         return message.toString();
     }
