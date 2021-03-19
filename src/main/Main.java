@@ -12,13 +12,13 @@ public class Main {
         Cripto cripto = new Cripto();
 
         /* Pega Mensagem do bloco de Texto */
-        String message = getMessageFromFile();
+        String message = getMessageFromFile("message.txt");
 
         /* Transforma cada char da mensagem em 8bit */
         String binaryMessage = cripto.get8BitMessage(message);
 
         /* Carrega a imagem para esconder a mensagem */
-        BufferedImage inputImage = getInputImage();
+        BufferedImage inputImage = getInputImage("inputImage.png");
 
         /* Gera o objeto da imagem de output */
         BufferedImage outputImage = cripto.encode(binaryMessage, inputImage);

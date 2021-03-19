@@ -12,10 +12,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Utils {
-    public static String getMessageFromFile() throws MessageArchiveNotFoundException, EndMessageTokenNotFoundException {
+    public static String getMessageFromFile(String fileMessage) throws MessageArchiveNotFoundException, EndMessageTokenNotFoundException {
         StringBuilder message = new StringBuilder();
         try {
-            File messageText = new File("message.txt");
+            File messageText = new File(fileMessage);
             Scanner myReader = new Scanner(messageText);
             while (myReader.hasNextLine()) {
                 message.append(myReader.nextLine());
@@ -32,7 +32,7 @@ public class Utils {
         return message.toString();
     }
 
-    public static BufferedImage getInputImage() throws InputImageNotFoundException {
+    public static BufferedImage getInputImage(String filePathName) throws InputImageNotFoundException {
         BufferedImage image;
         try {
             image = ImageIO.read(new File("inputImage.png"));
