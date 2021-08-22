@@ -50,6 +50,7 @@ public class Cripto {
                 newBlue = updateColor(newBlue, count++, message);
 
                 rgb = new Color(newRed, newGreen, newBlue).getRGB();
+
                 newImage.setRGB(j,i, rgb);
             }
         }

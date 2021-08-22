@@ -35,7 +35,7 @@ public class Utils {
     public static BufferedImage getInputImage(String filePathName) throws InputImageNotFoundException {
         BufferedImage image;
         try {
-            image = ImageIO.read(new File("inputImage.png"));
+            image = ImageIO.read(new File(filePathName));
         } catch (IOException e) {
             throw new InputImageNotFoundException("Imagem \"inputImage.png\" não encontrada");
         }
