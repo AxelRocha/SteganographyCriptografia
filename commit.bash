@@ -1,0 +1,1 @@
+git add . && commit -m "teste" && git push

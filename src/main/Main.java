@@ -39,5 +39,6 @@ public class Main {
         System.out.println("Mensagem Decodificada: \n" + decode);
         System.out.println("Mensagem Traduzida: \n" + frase);
 
+
     }
 }
